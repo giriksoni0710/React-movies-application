@@ -12,13 +12,14 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: 200,
+    marginLeft: 400
   },
   menu: {
     width: 200,
   },
 }));
 
-export default function Multiselect(props) {
+export default function Multiselect2(props) {
   const classes = useStyles();
   const [currency, setCurrency] = React.useState('EUR');
 
@@ -45,7 +46,7 @@ export default function Multiselect(props) {
           margin="normal"
           variant="outlined"
         >
-          {props.Multiselectvalues.map(option => (
+          {props.moviesmultiselect.map(option => (
             <option key={option.id} value={option.id}>
               {option.label}
             </option>

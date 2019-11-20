@@ -12,13 +12,14 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: 200,
+    marginLeft: 400
   },
   menu: {
     width: 200,
   },
 }));
 
-export default function Multiselect(props) {
+export default function Multiselect3(props) {
   const classes = useStyles();
   const [currency, setCurrency] = React.useState('EUR');
 
@@ -32,7 +33,7 @@ export default function Multiselect(props) {
         <TextField
           id="outlined-select-currency-native"
           select
-          label="Search type"
+          label="Category"
           className={classes.textField}
           value={currency}
           onChange={handleChange}
@@ -45,7 +46,7 @@ export default function Multiselect(props) {
           margin="normal"
           variant="outlined"
         >
-          {props.Multiselectvalues.map(option => (
+          {props.tvshowsmultiselect.map(option => (
             <option key={option.id} value={option.id}>
               {option.label}
             </option>
