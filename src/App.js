@@ -8,6 +8,9 @@ import Multiselect3 from './Components/Multiselect3'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import FullWidthTabs  from './Containers/tabcontainer'
+import Axios from 'axios'
+import { movie, tv, API_KEY, search } from './services/api_config';
+
 
 
 
@@ -16,7 +19,11 @@ class App extends Component {
 
   
   state = {
-
+    
+    multi: '',
+    searchValue: '',
+    firstsearchresults: [],
+    
     Multiselect: [
       {
         id: '1',
@@ -69,10 +76,37 @@ class App extends Component {
 
 
     ]
+  }
 
+  Multiselectselected= multiple=>{
+    console.log(multiple);
+    this.setState({
+        multi: multiple
+    })
+  }
 
+  searchvalue= searchvalue=>{
+    console.log(searchvalue);
+    this.setState({
+        searchValue: searchvalue
+    })
+  }
+  
+  searchresults= ()=>{
 
-
+    Axios.get(`${search}${this.state.multi}`,{
+      params:{
+        api_key: API_KEY,
+        query: this.state.searchValue
+      }
+    }).then((response) =>
+     {
+      //  console.log(response.data.results)
+    this.setState(
+      {firstsearchresults: response.data.results}
+      )
+      // console.log("results are :"+response.data.results)
+    }).catch(error => console.log(error));
 
   }
 
@@ -86,17 +120,18 @@ class App extends Component {
     </header>
     <Grid container spacing={2} style={{flexGrow: 1}}>
   <Grid item xs={6} sm={6} spacing={1} style={{textAlign:'right'}}>
-  <Searchbox></Searchbox>    
+  <Searchbox searchedquery={this.searchvalue}></Searchbox>    
   </Grid>
   <Grid item sm={2} spacing={1} style={{textAlign:'center'}}>
   
-    <Multiselect Multiselectvalues={this.state.Multiselect}></Multiselect>
+    <Multiselect Multiselectvalues={this.state.Multiselect}
+    Multiselectselected={this.Multiselectselected}></Multiselect>
         
   </Grid>
 
   <Grid item sm={1} style={{alignSelf: 'center', textAlign: "left"}} >
 
-    <Button variant="contained" color="primary" >
+    <Button variant="contained" color="primary" onClick={this.searchresults}>
             Search
     </Button>
   </Grid>
@@ -105,7 +140,8 @@ class App extends Component {
 
   <FullWidthTabs style={{width: '100%'}} 
   tvshowsmultiselect= {this.state.tvshowsmultiselect}
-  moviesmultiselect={this.state.moviesmultiselect}></FullWidthTabs>
+  moviesmultiselect={this.state.moviesmultiselect}
+  firstsearchresults={this.state.firstsearchresults}></FullWidthTabs>
 
 
 

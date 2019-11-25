@@ -47,8 +47,6 @@ class MediaCard extends Component {
 
     render() {
 
-    
-  
   return (
     <div>
 
@@ -96,7 +94,7 @@ return(
         </Grid>      
        </Card>
           )
-       })};
+       })}
        </div>
 
   );

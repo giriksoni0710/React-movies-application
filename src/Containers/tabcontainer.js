@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function FullWidthTabs(props) {
 
-    const {moviesmultiselect,tvshowsmultiselect} = props
+    const {moviesmultiselect,tvshowsmultiselect, firstsearchresults} = props
 
   const classes = useStyles();
   const theme = useTheme();
@@ -107,7 +107,7 @@ export default function FullWidthTabs(props) {
         <TabPanel value={value} index={1} dir={theme.direction}>
           <h1>Please enter a search</h1>
 
-          <SearchCard></SearchCard>
+          <SearchCard firstsearchresults={firstsearchresults}></SearchCard>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
         

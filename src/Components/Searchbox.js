@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
@@ -14,23 +14,34 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Searchbox = () => {
+class Searchbox extends Component {
 
-const classes = useStyles()
+  state={
+    searchvalue:''
+  }
+  handleChange = event => {
+    this.setState({searchvalue: event.target.value});
+    
+    this.props.searchedquery(event.target.value)
+  };
 
+render(){
 return (
 
 <div>
         <TextField
           id="outlined-basic"
-          className={classes.textField}
           label="Search"
+          style={{width: '50%'}}
+          value={this.state.searchvalue}
+          onChange={this.handleChange}
           margin="normal"
           variant="outlined"
         />
       </div>
 
 )
+}
 
 }
 
