@@ -100,8 +100,9 @@ export default function FullWidthTabs(props) {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <Multiselect2 moviesmultiselect={moviesmultiselect} style={{textAlign: "center"}}></Multiselect2>
-          <MediaCard2 value={value}></MediaCard2>
+          {/* <Multiselect2 moviesmultiselect={moviesmultiselect} style={{textAlign: "center"}}></Multiselect2> */}
+          <MediaCard value={value} moviesmultiselect={moviesmultiselect}></MediaCard>
+    
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           <h1>Please enter a search</h1>
@@ -110,7 +111,7 @@ export default function FullWidthTabs(props) {
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
         <Multiselect3 tvshowsmultiselect = {tvshowsmultiselect}></Multiselect3>
-        <MediaCard value={value}></MediaCard>
+        <MediaCard2 value={value} ></MediaCard2>
         
         </TabPanel>
       </SwipeableViews>

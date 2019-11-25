@@ -51,20 +51,20 @@ class App extends Component {
     ],
     moviesmultiselect: [
       {
-        id: '1',
+        id: 1,
         label: 'now_playing',
       },
       {
-        id: '2',
+        id: 2,
         label: 'popular',
       },
       {
-        id: '3',
+        id: 3,
         label: 'top_rated',
       },
       {
-          id: '4',
-          label: 'upcomming'
+          id: 4,
+          label: 'upcoming'
       }
 
 

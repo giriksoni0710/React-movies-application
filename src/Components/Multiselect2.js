@@ -1,53 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: 200,
-    marginLeft: 400
-  },
-  menu: {
-    width: 200,
-  },
-}));
 
-export default function Multiselect2(props) {
-  const classes = useStyles();
-  const [currency, setCurrency] = React.useState('EUR');
+class Multiselect2 extends Component {
+ 
+  state={
+    value:'',
+    allmovies: []
+  }
 
-  const handleChange = event => {
-    setCurrency(event.target.value);
+
+   handleChange = event => {
+    
+    this.setState({
+      value: event.target.value
+    });
+
+    this.props.getmoviedata(event.target.value)
   };
 
+  render(){
+
   return (
-    <form className={classes.container} noValidate autoComplete="off">
+    <form noValidate autoComplete="off">
       <div>
-        <TextField
+        <TextField style={{ width: 200,marginLeft: 400
+          }}
           id="outlined-select-currency-native"
           select
           label="Search type"
-          className={classes.textField}
-          value={currency}
-          onChange={handleChange}
-          SelectProps={{
-            native: true,
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
+          value={this.state.value}
+          onChange={this.handleChange}
           margin="normal"
           variant="outlined"
         >
-          {props.moviesmultiselect.map(option => (
-            <option key={option.id} value={option.id}>
+          {this.props.moviesmultiselect.map(option => (
+            <option key={option.id} value={option.label}>
               {option.label}
             </option>
           ))}
@@ -55,4 +45,7 @@ export default function Multiselect2(props) {
       </div>
     </form>
   );
+          }
 }
+
+export default Multiselect2
