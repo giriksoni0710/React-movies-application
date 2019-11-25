@@ -110,8 +110,8 @@ export default function FullWidthTabs(props) {
           <SearchCard></SearchCard>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-        <Multiselect3 tvshowsmultiselect = {tvshowsmultiselect}></Multiselect3>
-        <MediaCard2 value={value} ></MediaCard2>
+        
+        <MediaCard2 value={value} tvshowsmultiselect = {tvshowsmultiselect}></MediaCard2>
         
         </TabPanel>
       </SwipeableViews>

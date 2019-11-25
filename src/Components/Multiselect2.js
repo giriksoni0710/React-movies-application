@@ -26,7 +26,7 @@ class Multiselect2 extends Component {
   return (
     <form noValidate autoComplete="off">
       <div>
-        <TextField style={{ width: 200,marginLeft: 400
+        <TextField style={{ width: 200
           }}
           id="outlined-select-currency-native"
           select
