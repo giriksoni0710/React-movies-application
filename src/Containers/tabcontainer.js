@@ -105,6 +105,7 @@ export default function FullWidthTabs(props) {
     
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
+      
           <h1>Please enter a search</h1>
 
           <SearchCard firstsearchresults={firstsearchresults}></SearchCard>
